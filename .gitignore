@@ -1,0 +1,19 @@
+# This workspace also contains private project material. Track only the site.
+*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/site/
+/site/*
+!/site/index.html
+!/site/styles.css
+!/site/app.js
+!/site/hero-depth.js
+!/site/assets/
+/site/assets/*
+!/site/assets/docs/
+/site/assets/docs/*
+!/site/assets/docs/*.webp
+!/site/assets/banner.webp
+!/site/assets/mark.webp
+!/site/assets/coachplanner-plano-de-treino.pdf
