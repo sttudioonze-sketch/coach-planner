@@ -38,4 +38,6 @@ Layout conferido em larguras de 320 a 1920 px, sem rolagem horizontal da página
 
 Este repositório contém apenas os arquivos usados pelo site. Conversas, documentos de trabalho, material original em alta resolução e experimentos rejeitados permanecem fora do Git. A lista explícita em `.gitignore` protege esses materiais na pasta de trabalho; atualize-a ao incluir novos arquivos do site.
 
+Exceção: `.claude/skills/` guarda skills do Claude Code usadas no trabalho do projeto (ex.: `brainstorm-para-projeto`, que transforma um brainstorming em brief, plano e backlog). Elas não fazem parte do site publicado.
+
 Enviar código ao GitHub não publica o site. Hospedagem, domínio e integrações de produção são etapas separadas.

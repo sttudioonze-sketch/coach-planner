@@ -3,6 +3,10 @@
 !/.gitignore
 !/.gitattributes
 !/README.md
+!/.claude/
+/.claude/*
+!/.claude/skills/
+!/.claude/skills/**
 !/site/
 /site/*
 !/site/index.html
