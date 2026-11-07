@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#ECEEF0">
+  <title>CRM · Coach Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Saira:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <!-- Login -->
+  <main id="login-view" class="login" hidden>
+    <form id="login-form" class="login-card" novalidate>
+      <div class="brand"><span>coach<b class="dot">.</b></span><strong>planner</strong><em>CRM</em></div>
+      <p class="login-lead">Entre para ver seus contatos do WhatsApp.</p>
+      <label>E-mail<input id="login-email" type="email" autocomplete="username" required></label>
+      <label>Senha<input id="login-password" type="password" autocomplete="current-password" required></label>
+      <p id="login-error" class="form-error" role="alert"></p>
+      <button class="btn btn-red" type="submit">Entrar</button>
+    </form>
+  </main>
+
+  <!-- Configuração pendente -->
+  <main id="setup-view" class="login" hidden>
+    <div class="login-card">
+      <div class="brand"><span>coach<b class="dot">.</b></span><strong>planner</strong><em>CRM</em></div>
+      <p class="login-lead">Falta configurar o app.</p>
+      <p>Abra o arquivo <code>config.js</code> e preencha <code>SUPABASE_URL</code> e <code>SUPABASE_ANON_KEY</code> com os dados do seu projeto Supabase. O passo a passo está em <code>crm/README.md</code>.</p>
+    </div>
+  </main>
+
+  <!-- Quadro -->
+  <div id="board-view" class="app" hidden>
+    <header class="topbar">
+      <div class="brand small"><span>coach<b class="dot">.</b></span><strong>planner</strong><em>CRM</em></div>
+      <button id="bridge-pill" class="pill" type="button" title="Conexão com o WhatsApp">
+        <i class="pill-dot"></i><span id="bridge-label">Verificando…</span>
+      </button>
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Buscar nome, número ou mensagem" aria-label="Buscar">
+        <select id="filter" aria-label="Filtro">
+          <option value="all">Todos</option>
+          <option value="unread">Não lidas</option>
+          <option value="due">Retorno para hoje ou atrasado</option>
+          <option value="ignored">Contatos ignorados</option>
+        </select>
+        <button id="new-lead" class="btn btn-red" type="button">+ Novo card</button>
+        <button id="logout" class="btn btn-ghost" type="button">Sair</button>
+      </div>
+    </header>
+
+    <section id="qr-panel" class="qr-panel" hidden>
+      <canvas id="qr-canvas" width="240" height="240" aria-label="QR Code do WhatsApp"></canvas>
+      <div>
+        <h2>Conecte o seu WhatsApp</h2>
+        <ol>
+          <li>No celular, abra o WhatsApp.</li>
+          <li>Toque em <b>Configurações</b> (ou ⋮) &gt; <b>Aparelhos conectados</b>.</li>
+          <li>Toque em <b>Conectar aparelho</b> e aponte para este código.</li>
+        </ol>
+        <p class="muted">O código muda a cada poucos segundos; esta tela atualiza sozinha.</p>
+      </div>
+    </section>
+
+    <main id="board" class="board" aria-label="Quadro de vendas"></main>
+  </div>
+
+  <!-- Painel do contato -->
+  <div id="drawer-backdrop" class="backdrop" hidden></div>
+  <aside id="drawer" class="drawer" hidden aria-labelledby="d-name" role="dialog" aria-modal="true">
+    <header class="drawer-head">
+      <input id="d-name" class="d-name" placeholder="Nome do contato" aria-label="Nome do contato">
+      <button id="d-close" class="icon-btn" type="button" aria-label="Fechar">×</button>
+    </header>
+    <div class="drawer-sub">
+      <span id="d-phone"></span>
+      <a id="d-wa" class="text-link" target="_blank" rel="noopener noreferrer">Abrir no WhatsApp ↗</a>
+    </div>
+
+    <div class="drawer-body">
+      <form id="d-form" class="fields">
+        <label>Etapa<select id="d-stage"></select></label>
+        <label>Produto<select id="d-product"></select></label>
+        <label>Valor (R$)<input id="d-value" type="number" min="0" step="0.01" inputmode="decimal"></label>
+        <label>Retornar em<input id="d-follow" type="date"></label>
+        <label class="wide">Telefone (com DDD)<input id="d-phone-input" type="tel" placeholder="51 99999-9999"></label>
+        <label class="wide">Anotações<textarea id="d-notes" rows="3" placeholder="Clube, modalidade, combinados…"></textarea></label>
+        <p id="d-saved" class="saved" aria-live="polite"></p>
+      </form>
+
+      <section class="chat" aria-label="Conversa">
+        <div id="d-messages" class="messages"></div>
+        <form id="d-reply" class="reply">
+          <select id="d-template" aria-label="Respostas prontas"><option value="">Respostas prontas…</option></select>
+          <textarea id="d-text" rows="3" placeholder="Escreva uma resposta" aria-label="Resposta"></textarea>
+          <div class="reply-actions">
+            <span id="d-reply-hint" class="muted"></span>
+            <button class="btn btn-red" type="submit">Enviar pelo WhatsApp</button>
+          </div>
+        </form>
+      </section>
+
+      <footer class="drawer-foot">
+        <button id="d-ignore" class="btn btn-ghost" type="button">Ignorar contato</button>
+        <button id="d-delete" class="btn btn-ghost danger" type="button">Excluir card</button>
+      </footer>
+    </div>
+  </aside>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

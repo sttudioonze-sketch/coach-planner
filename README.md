@@ -34,8 +34,12 @@ O formulário usa um endpoint público Brevo. A automação de e-mail e o envio 
 
 Layout conferido em larguras de 320 a 1920 px, sem rolagem horizontal da página ou títulos cortados. Interações locais, galeria e retorno dos documentos ao repouso foram conferidos. A validação por largura não substitui testes em aparelhos físicos e navegadores nativos antes da publicação.
 
+## CRM Kanban com WhatsApp
+
+A pasta `crm/` tem um CRM em quadro Kanban, separado do site: cada mensagem recebida no WhatsApp vira um card. Instalação, custos (R$ 0) e cuidados estão em [`crm/README.md`](crm/README.md). Essa pasta não é publicada junto com a landing page.
+
 ## Escopo do repositório
 
-Este repositório contém apenas os arquivos usados pelo site. Conversas, documentos de trabalho, material original em alta resolução e experimentos rejeitados permanecem fora do Git. A lista explícita em `.gitignore` protege esses materiais na pasta de trabalho; atualize-a ao incluir novos arquivos do site.
+Este repositório contém apenas os arquivos usados pelo site e pelo CRM (`crm/`). Conversas, documentos de trabalho, material original em alta resolução e experimentos rejeitados permanecem fora do Git. A lista explícita em `.gitignore` protege esses materiais na pasta de trabalho; atualize-a ao incluir novos arquivos do site.
 
 Enviar código ao GitHub não publica o site. Hospedagem, domínio e integrações de produção são etapas separadas.

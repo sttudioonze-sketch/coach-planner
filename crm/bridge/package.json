@@ -1,0 +1,19 @@
+{
+  "name": "coach-planner-crm-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ponte entre o WhatsApp (conexão por QR Code) e o CRM Kanban no Supabase.",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
+    "baileys": "7.0.0-rc14",
+    "pino": "^9.0.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}

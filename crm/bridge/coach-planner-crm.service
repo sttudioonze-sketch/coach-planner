@@ -1,0 +1,22 @@
+# Mantém a ponte ligada 24h e reinicia sozinha se cair ou se o servidor reiniciar.
+# Instalação (no servidor, dentro da pasta crm/bridge):
+#   sudo cp coach-planner-crm.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now coach-planner-crm
+# Ver o que está acontecendo:  journalctl -u coach-planner-crm -f
+[Unit]
+Description=Coach Planner CRM - ponte do WhatsApp
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/coach-planner/crm/bridge
+ExecStart=/usr/bin/node src/index.js
+Restart=always
+RestartSec=10
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
