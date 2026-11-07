@@ -45,12 +45,14 @@ O caminho 100% oficial (API do WhatsApp Business) exige um parceiro da Meta e te
 
 ## Instalação
 
+> **Já feito para o Coach Planner:** o projeto Supabase `coach-planner-crm` (São Paulo, plano Free) já tem as tabelas, o e-mail sttudioonze@gmail.com autorizado e o `app/config.js` preenchido. Falta: criar o seu login (passo 1.3), desligar novos cadastros (passo 1.5), ligar a ponte (etapa 2) e publicar o app (etapa 3).
+
 São três etapas, nesta ordem. Leva cerca de 1 hora na primeira vez.
 
 ### 1. Banco de dados (Supabase)
 
 1. Crie uma conta em [supabase.com](https://supabase.com) e um projeto novo (plano **Free**, região **South America (São Paulo)**).
-2. No menu **SQL Editor**, cole todo o conteúdo de `crm/supabase/migrations/20261107000000_crm_whatsapp.sql` e clique em **Run**.
+2. No menu **SQL Editor**, cole o conteúdo de cada arquivo de `crm/supabase/migrations/`, em ordem (`...000000_crm_whatsapp.sql` e depois `...000100_crm_private_schema.sql`), clicando em **Run** a cada um.
 3. Em **Authentication > Users > Add user > Create new user**, crie o seu login com e-mail e senha e marque **Auto Confirm User**.
 4. Volte ao **SQL Editor** e autorize esse e-mail no CRM (em letras minúsculas):
    ```sql

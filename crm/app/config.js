@@ -2,5 +2,5 @@
 // A chave pública (anon / publishable) pode ficar no app: o acesso aos dados
 // é protegido pelo login e pela lista de e-mails em crm_users.
 // NUNCA coloque aqui a chave service_role.
-export const SUPABASE_URL = 'https://SEU-PROJETO.supabase.co';
-export const SUPABASE_ANON_KEY = 'COLE-AQUI-A-CHAVE-PUBLICA';
+export const SUPABASE_URL = 'https://eeavmcdqjnogdvbcgepy.supabase.co';
+export const SUPABASE_ANON_KEY = 'sb_publishable_GsgSM5ZtbfMao7c2NNPF2w_x6VhDoMK';
