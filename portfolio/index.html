@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Portfólio profissional</title>
+  <meta name="description" content="Portfólio profissional de treinador de futebol: trajetória, formação, filosofia de trabalho, modelo de jogo e metodologia de treinamento.">
+  <link rel="preload" href="assets/fonts/titillium-web-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="toolbar">
+    <div class="identity" id="identity"></div>
+    <nav class="tools" aria-label="Ferramentas">
+      <button type="button" id="open-areas">Áreas</button>
+      <button type="button" id="fullscreen">Tela cheia</button>
+    </nav>
+  </header>
+
+  <main class="viewport" id="viewport">
+    <div class="frame" id="frame">
+      <div class="stage" id="stage" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <footer class="controls">
+    <button type="button" id="prev" aria-label="Página anterior">‹</button>
+    <select id="page-select" aria-label="Escolher página"></select>
+    <span id="count" aria-hidden="true"></span>
+    <button type="button" id="next" aria-label="Próxima página">›</button>
+  </footer>
+  <p class="help">Use as setas do teclado para navegar. No celular, deslize para os lados.</p>
+
+  <dialog id="areas-dialog" class="dark-dialog" aria-labelledby="areas-title">
+    <div class="dialog-top">
+      <div class="identity dialog-identity"></div>
+      <button type="button" class="close" data-close aria-label="Fechar áreas">×</button>
+    </div>
+    <h2 id="areas-title">Áreas do portfólio</h2>
+    <div class="areas-grid" id="areas-grid"></div>
+  </dialog>
+
+  <dialog id="video-dialog" class="dark-dialog wide" aria-labelledby="video-title">
+    <div class="dialog-top">
+      <div class="identity dialog-identity"></div>
+      <div class="dialog-caption"><h2 id="video-title">Vídeo</h2></div>
+      <button type="button" class="close" data-close aria-label="Fechar vídeo">×</button>
+    </div>
+    <div class="video-player" id="video-player"></div>
+  </dialog>
+
+  <dialog id="doc-dialog" class="dark-dialog wide" aria-labelledby="doc-title">
+    <div class="dialog-top">
+      <div class="identity dialog-identity"></div>
+      <div class="dialog-caption"><h2 id="doc-title">Documento</h2></div>
+      <div class="doc-tools">
+        <button type="button" id="doc-out" aria-label="Diminuir">−</button>
+        <output id="doc-scale">100%</output>
+        <button type="button" id="doc-in" aria-label="Aumentar">+</button>
+        <button type="button" id="doc-fit">Ajustar</button>
+      </div>
+      <button type="button" class="close" data-close aria-label="Fechar documento">×</button>
+    </div>
+    <div class="doc-viewport" id="doc-viewport" tabindex="0"><img id="doc-image" alt=""></div>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
